@@ -32,7 +32,7 @@ if [[ -z "$LATEST_TAG" ]]; then
 fi
 
 # Compose asset name
-ASSET="cutler-aarch64-apple-darwin.zip"
+ASSET="cutler-aarch64-apple-darwin.tar.gz"
 ASSET_URL="https://github.com/$REPO/releases/download/$LATEST_TAG/$ASSET"
 
 echo "⬇️  Downloading $ASSET_URL ..."
@@ -43,13 +43,13 @@ if ! curl -fsSL -O "$ASSET_URL"; then
   exit 1
 fi
 
-echo "📦 Unzipping..."
-if ! unzip -q "$ASSET"; then
-  echo "❌ Failed to unzip $ASSET"
+echo "📦 Extracting..."
+if ! tar -xzf "$ASSET"; then
+  echo "❌ Failed to extract $ASSET"
   exit 1
 fi
 
-# Find the cutler binary inside the zip (usually in bin/)
+# Find the cutler binary inside the archive (usually in bin/)
 if [[ -f "bin/cutler" ]]; then
   BIN_PATH="bin/cutler"
 elif [[ -f "cutler" ]]; then
