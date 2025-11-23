@@ -49,4 +49,4 @@ else
 fi
 
 echo "🎉 Uninstallation complete."
-echo "Note that the .cutler_snapshot file in the home directory will not be removed.\nYou may remove it yourself if you wish."
+echo "Note that the snapshot file in the configuration directory will not be removed.\nYou may remove it yourself if needed."
